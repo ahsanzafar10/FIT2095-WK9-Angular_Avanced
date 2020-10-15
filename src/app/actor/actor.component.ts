@@ -7,10 +7,12 @@ import { DatabaseService } from "../database.service";
 })
 export class ActorComponent implements OnInit {
   actorsDB: any[] = [];
+  actorsyearDB: any[] = [];
   section = 1;
   fullName: string = "";
   bYear: number = 0;
   actorId: string = "";
+  actoryearselection = 0;
   constructor(private dbService: DatabaseService) {}
   //Get all Actors
   onGetActors() {
@@ -49,6 +51,7 @@ export class ActorComponent implements OnInit {
     this.onGetActors();
   }
   changeSection(sectionId) {
+    this.onSelectActorYear();
     this.section = sectionId;
     this.resetValues();
   }
@@ -57,4 +60,13 @@ export class ActorComponent implements OnInit {
     this.bYear = 0;
     this.actorId = "";
   }
+  //Get all Actors
+  onSelectActorYear() {
+    console.log("!!!!!!");
+    this.dbService.showActorYear(this.actoryearselection).subscribe((data: any[]) => {
+      this.actorsyearDB = data;
+    });
+  }
+
+  
 }

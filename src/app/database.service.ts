@@ -28,9 +28,6 @@ export class DatabaseService {
     let url = "/actors/" + id;
     return this.http.delete(url, httpOptions);
   }
-  deleteActorFromMovie(){
-    let  url = "/movies/"
-  }
   createMovie(data) {
     return this.http.post("/movies", data, httpOptions);
   }
@@ -49,5 +46,11 @@ export class DatabaseService {
     let url = '/movies/' + movieid + '/' + actorid;
     return this.http.post(url, httpOptions);
  }
+  showActorYear(byear) {
+      let url = "/actors/" + "?min_age=1" + "&max_age=20";
+      return this.http.get(url);
+  }
+
+
 
 }
